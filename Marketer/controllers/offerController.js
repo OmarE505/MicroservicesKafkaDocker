@@ -7,7 +7,7 @@ const createOffer = asyncHandler(async (req, res) => {
   const amountBody = req.body.amount;
   if (!offerBody || !amountBody) {
     res.status(400);
-    throw new Error("Please add an offer to create");
+    throw new Error("Please add an offer and amount to create an offer");
   }
   const offer = new Offer(offerBody, amountBody);
   produce(offer, false);
@@ -19,7 +19,7 @@ const deleteOffer = asyncHandler(async (req, res) => {
   const amountBody = req.body.amount;
   if (!offerBody || !amountBody) {
     res.status(400);
-    throw new Error("Please add an offer to delete");
+    throw new Error("Please add an offer and amount to delete");
   }
   const offer = new Offer(offerBody, amountBody);
   produce(offer, true);

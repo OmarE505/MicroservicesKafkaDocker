@@ -12,7 +12,7 @@ const getOffers = asyncHandler(async (req, res) => {
 const createOffer = asyncHandler(async (req, res) => {
   if (!req.body.offer || !req.body.amount) {
     res.status(400);
-    throw new Error("Please add an offer or amount");
+    throw new Error("Please add an offer and amount to add an offer");
   }
 
   const offer = await Offer.create({

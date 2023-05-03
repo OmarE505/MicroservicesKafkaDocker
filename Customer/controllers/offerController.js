@@ -24,8 +24,11 @@ export const createOffer = asyncHandler(async (req, res) => {
 });
 
 export const getOffer = asyncHandler(async (req, res) => {
-  const offer = await Offer.findById(req.params.id);
-  if (!offer) {
+  let offer = null;
+  try {
+    offer = await Offer.findById(req.params.id);
+  } catch (err) {
+    console.log(err);
     res.status(400);
     throw new Error("There is no offer with id = " + req.params.id);
   }
@@ -34,8 +37,10 @@ export const getOffer = asyncHandler(async (req, res) => {
 });
 
 export const updateOffer = asyncHandler(async (req, res) => {
-  const offer = await Offer.findById(req.params.id);
-  if (!offer) {
+  let offer = null;
+  try {
+    offer = await Offer.findById(req.params.id);
+  } catch (err) {
     res.status(400);
     throw new Error("There is no offer with id = " + req.params.id);
   }
@@ -45,12 +50,14 @@ export const updateOffer = asyncHandler(async (req, res) => {
     amount: req.body.amount,
   });
 
-  res.status(200).json(updatedOffer);
+  res.status(200).json({ offer: req.body.offer, amount: req.body.amount });
 });
 
 export const deleteOffer = asyncHandler(async (req, res) => {
-  const offer = await Offer.findById(req.params.id);
-  if (!offer) {
+  let offer = null;
+  try {
+    offer = await Offer.findById(req.params.id);
+  } catch (err) {
     res.status(400);
     throw new Error("There is no offer with id = " + req.params.id);
   }

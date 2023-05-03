@@ -1,5 +1,5 @@
 import express, { json, urlencoded } from "express";
-import errorHandler from "./middlwares/errorMiddlware.js";
+import errorHandler from "./middlewares/errorMiddleware.js";
 import router from "./routes/offersRoutes.js";
 
 const PORT = process.env.PORT || 3001;

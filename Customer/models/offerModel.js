@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
 
-const offerSchema = mongoose.Schema(
+const offerSchema = Schema(
   {
     offer: {
       type: String,
@@ -16,4 +16,4 @@ const offerSchema = mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Offer", offerSchema);
+export default model("Offer", offerSchema);

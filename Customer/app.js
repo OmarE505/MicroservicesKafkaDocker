@@ -1,19 +1,20 @@
-const express = require("express");
-const { errorHandler } = require("./middlwares/errorMiddlware");
-const connectDB = require("./config/db");
-const consume = require("./consumers/offersConsumer");
+import express, { json, urlencoded } from "express";
+import errorHandler from "./middlwares/errorMiddlware.js";
+import connectDB from "./config/db.js";
+import consume from "./consumers/offersConsumer.js";
+import router from "./routes/offersRoutes.js"
 
 const PORT = process.env.PORT || 3002;
 connectDB();
 
 const app = express();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(json());
+app.use(urlencoded({ extended: false }));
 
 consume();
 
-app.use("/api/offers", require("./routes/offersRoutes"));
+app.use("/api/offers", router);
 app.use(errorHandler);
 
 app.listen(PORT, () => {

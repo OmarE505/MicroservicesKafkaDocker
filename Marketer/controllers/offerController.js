@@ -1,8 +1,8 @@
-const asyncHandler = require("express-async-handler");
-const produce = require("../producers/marketerProducer");
-const Offer = require("../models/offerModel");
+import asyncHandler from "express-async-handler";
+import produce from "../producers/marketerProducer.js";
+import Offer from "../models/offerModel.js";
 
-const createOffer = asyncHandler(async (req, res) => {
+export const createOffer = asyncHandler(async (req, res) => {
   const offerBody = req.body.offer;
   const amountBody = req.body.amount;
   if (!offerBody || !amountBody) {
@@ -14,7 +14,7 @@ const createOffer = asyncHandler(async (req, res) => {
   res.status(200).json(offer);
 });
 
-const deleteOffer = asyncHandler(async (req, res) => {
+export const deleteOffer = asyncHandler(async (req, res) => {
   const offerBody = req.body.offer;
   const amountBody = req.body.amount;
   if (!offerBody || !amountBody) {
@@ -25,8 +25,3 @@ const deleteOffer = asyncHandler(async (req, res) => {
   produce(offer, true);
   res.status(200).json(offer);
 });
-
-module.exports = {
-  createOffer,
-  deleteOffer,
-};

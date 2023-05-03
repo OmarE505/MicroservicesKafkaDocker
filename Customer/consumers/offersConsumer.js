@@ -1,5 +1,5 @@
-const { createOffer, deleteOffer } = require("../utilities/offerUtilites");
-const { Kafka } = require("kafkajs");
+import { createOffer, deleteOffer } from "../utilities/offerUtilites.js";
+import { Kafka } from "kafkajs";
 
 function consume() {
   async function consumeOffers() {
@@ -30,4 +30,4 @@ function consume() {
   consumeOffers();
 }
 
-module.exports = consume;
+export default consume;

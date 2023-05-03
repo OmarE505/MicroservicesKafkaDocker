@@ -1,15 +1,13 @@
-const Offer = require("../models/offerModel");
+import Offer from "../models/offerModel.js";
 
-const deleteOffer = async (offerName, amountValue) => {
-  const offer = await Offer.findOneAndDelete({ offer: offerName, amount: amountValue });
+export const deleteOffer = async (offerName, amountValue) => {
+  const offer = await Offer.findOneAndDelete({
+    offer: offerName,
+    amount: amountValue,
+  });
   console.log(offer);
 };
 
-const createOffer = async (offerName, amountValue) => {
+export const createOffer = async (offerName, amountValue) => {
   await Offer.create({ offer: offerName, amount: amountValue });
-};
-
-module.exports = {
-  deleteOffer,
-  createOffer,
 };

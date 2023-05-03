@@ -1,4 +1,4 @@
-const { Kafka } = require("kafkajs");
+import { Kafka } from "kafkajs";
 
 function produce({offer, amount}, deleteFlag) {
   const kafka = new Kafka({
@@ -30,4 +30,4 @@ function produce({offer, amount}, deleteFlag) {
   sendMessage();
 }
 
-module.exports = produce;
+export default produce;
